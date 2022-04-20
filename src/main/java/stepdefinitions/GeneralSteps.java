@@ -14,7 +14,7 @@ public class GeneralSteps {
     }
 
     @Given("^\"([^\"]*)\" is accessed$")
-    public void isAccessed(String adresaUrl) {
+    public void isAccessed(String adresaUrl) throws InterruptedException {
         context.getWebDriverManager().getDriverul().get(adresaUrl);
     }
 
