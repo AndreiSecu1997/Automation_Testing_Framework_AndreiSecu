@@ -2,6 +2,7 @@ package managers;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
 import java.util.Locale;
@@ -18,7 +19,11 @@ public class WebDriverManager {
     private void initializareDriver() {
         if (browserType.toUpperCase(Locale.ROOT).equals("CHROME")) {
             System.setProperty("webdriver.chrome.driver", "src/main/resources/drivers/chromedriver.exe");
-            driverul = new ChromeDriver();
+            ChromeOptions chromeOptions = new ChromeOptions();
+            chromeOptions.addArguments("start-maximized");
+            chromeOptions.addArguments("incognito");
+            driverul = new ChromeDriver(chromeOptions);
+
         } else if (browserType.toUpperCase(Locale.ROOT).equals("FIREFOX")) {
             System.setProperty("webdriver.gecko.driver", "src/main/resources/drivers/geckodriver.exe");
             driverul = new FirefoxDriver();
