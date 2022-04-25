@@ -37,6 +37,5 @@ public class TestRunner {
 
         webDriverManagerObiect.getDriverul().close();
         webDriverManagerObiect.getDriverul().quit();
-
     }
 }
