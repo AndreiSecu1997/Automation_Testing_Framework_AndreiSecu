@@ -2,19 +2,20 @@
 Feature: Registration flow feature
 
   Background:
-    Given "https://demo-opencart.com/" is accessed
+    Given "HomePage" is accessed
 
   @ExecutaAcestTC
   Scenario: The Registration page can be accessed from navigation bar
     When user clicks on register buttons from navigation bar
-    Then "/index.php?route=account/register" is present within the current url
+    Then Correct "RegisterPage" endpoint is displayed
+
 
   Scenario: Open cart page is accessible
     Then "https://demo-opencart.com/" is present within the current url
 
   @LectieAvansata
   Scenario Outline: error message is displayed when providing invalid data for <affectedFiled>
-    And user clicks on register buttons from navigation bar
+    Given "RegisterPage" is accessed
     When the register fields are populated with the following data:
       | firstName       | <first name>   |
       | lastName        | <last name>    |

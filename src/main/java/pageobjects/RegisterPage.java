@@ -41,6 +41,13 @@ public class RegisterPage extends Page {
     @FindBy(xpath = "//div[@class=\"text-danger\"]")
     private List<WebElement> listOfErrors;
 
+    private final String ENDPOINT = "/index.php?route=account/register";
+
+    public RegisterPage goToPage() {
+        driver.get(BASE_URL + ENDPOINT);
+        return this;
+    }
+
     public void populateRegisterFormWithData(String firstName, String lastName, String email, String phone, String password, String confirmPassword) {
         firstNameInputField.sendKeys(firstName);
         lastNameInputField.sendKeys(lastName);
@@ -62,4 +69,7 @@ public class RegisterPage extends Page {
         return errorMessage.getText();
     }
 
+    public String getENDPOINT() {
+        return ENDPOINT;
+    }
 }
