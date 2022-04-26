@@ -1,6 +1,7 @@
 package pageobjects;
 
 import managers.PropertiesManager;
+import managers.WebDriverWaiterManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -31,7 +32,11 @@ public abstract class Page {
     protected final String BASE_URL = PropertiesManager.getBaseUrl();
 
     public void navigateToRegisterPageViaHeader() {
+        WebDriverWaiterManager.waitElementToBeVisible(myAccountIcon, driver);
         myAccountIcon.click();
+
+        WebDriverWaiterManager.waitElementToBeVisible(registerBtn, driver);
+        WebDriverWaiterManager.waitElementToBeClickable(registerBtn, driver);
         registerBtn.click();
     }
 

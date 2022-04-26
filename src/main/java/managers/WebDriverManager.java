@@ -5,6 +5,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
+import java.time.Duration;
 import java.util.Locale;
 
 public class WebDriverManager {
@@ -23,13 +24,14 @@ public class WebDriverManager {
             chromeOptions.addArguments("start-maximized");
             chromeOptions.addArguments("incognito");
             driverul = new ChromeDriver(chromeOptions);
-
         } else if (browserType.toUpperCase(Locale.ROOT).equals("FIREFOX")) {
             System.setProperty("webdriver.gecko.driver", "src/main/resources/drivers/geckodriver.exe");
             driverul = new FirefoxDriver();
         } else {
             System.out.println("Nu exista un astfel de browser implementat!");
         }
+        driverul.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+        driverul.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(30));
     }
 
     public WebDriver getDriverul() {
